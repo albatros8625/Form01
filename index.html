@@ -42,12 +42,8 @@
       
       fetch("https://script.google.com/macros/s/AKfycbxh9jAIUIjWRHZsFlIyR6qZ5j7kuFntYVUdAKbrOSeUh5nJS4qnSBfnsMJzEmrKs8g6/exec", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-    nama: document.getElementById("nama").value,
-    email: document.getElementById("email").value,
-    pesan: document.getElementById("pesan").value
-      }),})
+        body: formData
+      })
       .then(res => res.text())
       .then(() => {
         alert("Terima kasih! Ulasan Anda berhasil dikirim.");
