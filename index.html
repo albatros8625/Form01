@@ -1,46 +1,56 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-  <title>Form Ulasan</title>
+  <meta charset="UTF-8">
+  <title>Form Ulasan Pelanggan</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      max-width: 500px;
+      margin: auto;
+    }
+    h2 {
+      text-align: center;
+    }
+    label {
+      font-weight: bold;
+    }
+    input, textarea, button {
+      width: 100%;
+      margin-bottom: 15px;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
   <script>
     function handleSubmit(event) {
-    event.preventDefault();
+      event.preventDefault();
 
-    const formData = new URLSearchParams();
-    formData.append("nama", document.getElementById("nama").value);
-    formData.append("email", document.getElementById("email").value);
-    formData.append("pesan", document.getElementById("pesan").value);
+      const formData = new URLSearchParams();
+      formData.append("nama", document.getElementById("nama").value);
+      formData.append("email", document.getElementById("email").value);
+      formData.append("pesan", document.getElementById("pesan").value);
 
-    fetch("https://script.google.com/macros/s/AKfycbxh9jAIUIjWRHZsFlIyR6qZ5j7kuFntYVUdAKbrOSeUh5nJS4qnSBfnsMJzEmrKs8g6/exec", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: formData.toString()
-    })
-    .then(res => res.text())
-    .then(() => {
-      alert("Data berhasil dikirim!");
-      window.location.href = "https://maps.app.goo.gl/8b4aqMv6ei5XMqke8?review=1";
-    })
-    .catch(error => {
-      console.error("Error:", error);
-      alert("Terjadi kesalahan saat mengirim data.");
-    });
-  }
-  </script>
-</head>
-<body>
-  <h2>Form Ulasan Pelanggan</h2>
-  <form onsubmit="handleSubmit(event)">
-    <label>Nama:</label><br>
-    <input type="text" id="nama" required><br><br>
-
-    <label>Email:</label><br>
-    <input type="email" id="email" required><br><br>
-
-    <label>Pesan:</label><br>
-    <textarea id="pesan" required></textarea><br><br>
-
-    <button type="submit">Kirim</button>
-  </form>
-</body>
-</html>
+      fetch("https://script.google.com/macros/s/AKfycbxh9jAIUIjWRHZsFlIyR6qZ5j7kuFntYVUdAKbrOSeUh5nJS4qnSBfnsMJzEmrKs8g6/exec", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: formData.toString()
+      })
+      .then(res => res.text())
+      .then(() => {
+        alert("Terima kasih! Ulasan Anda berhasil dikirim.");
+        window.location.href = "https://maps.app.goo.gl/8b4aqMv6ei5XMqke8?review=1";
+      })
+      .catch(error => {
+        console.error("Gagal mengirim data:", error);
+        alert("Terjadi kesalahan saat mengirim data. Silakan coba lagi.");
