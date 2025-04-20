@@ -53,3 +53,23 @@
       .catch(error => {
         console.error("Gagal mengirim data:", error);
         alert("Terjadi kesalahan saat mengirim data. Silakan coba lagi.");
+      });
+    }
+  </script>
+</head>
+<body>
+  <h2>Form Ulasan Pelanggan</h2>
+  <form onsubmit="handleSubmit(event)">
+    <label for="nama">Nama:</label>
+    <input type="text" id="nama" required>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" required>
+
+    <label for="pesan">Pesan:</label>
+    <textarea id="pesan" required></textarea>
+
+    <button type="submit">Kirim</button>
+  </form>
+</body>
+</html>
