@@ -43,8 +43,8 @@
 
       fetch("https://script.google.com/macros/s/AKfycbxh9jAIUIjWRHZsFlIyR6qZ5j7kuFntYVUdAKbrOSeUh5nJS4qnSBfnsMJzEmrKs8g6/exec", {
         method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: formData.toString()
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
       })
       .then(res => res.text())
       .then(() => {
