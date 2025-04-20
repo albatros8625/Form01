@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Form Ulasan</title>
+  <script>
+    function handleSubmit(event) {
+      event.preventDefault();
+
+      const data = {
+        nama: document.getElementById("nama").value,
+        email: document.getElementById("email").value,
+        pesan: document.getElementById("pesan").value,
+      };
+
+      fetch("https://script.google.com/macros/s/AKfycb.../exec", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: { "Content-Type": "application/json" }
+      })
+      .then(res => res.json())
+      .then(() => {
+        window.location.href = "https://g.page/namabisnis/review"; // Ganti dengan link review kamu
+      });
+    }
+  </script>
+</head>
+<body>
+  <h2>Form Ulasan</h2>
+  <form onsubmit="handleSubmit(event)">
+    <label>Nama:</label><br>
+    <input type="text" id="nama" required><br><br>
+
+    <label>Email:</label><br>
+    <input type="email" id="email" required><br><br>
+
+    <label>Pesan:</label><br>
+    <textarea id="pesan" required></textarea><br><br>
+
+    <button type="submit">Kirim</button>
+  </form>
+</body>
+</html>
