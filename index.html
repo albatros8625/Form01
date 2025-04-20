@@ -1,49 +1,25 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Form Ulasan</title>
-  <script>
-    function handleSubmit(event) {
-      event.preventDefault();
+<script>
+  function handleSubmit(event) {
+    event.preventDefault();
 
-      const data = {
-        nama: document.getElementById("nama").value,
-        email: document.getElementById("email").value,
-        pesan: document.getElementById("pesan").value,
-      };
+    const formData = new URLSearchParams();
+    formData.append("nama", document.getElementById("nama").value);
+    formData.append("email", document.getElementById("email").value);
+    formData.append("pesan", document.getElementById("pesan").value);
 
-      fetch("https://script.google.com/macros/s/AKfycbxh9jAIUIjWRHZsFlIyR6qZ5j7kuFntYVUdAKbrOSeUh5nJS4qnSBfnsMJzEmrKs8g6/exec", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: 
-        "nama=" + encodeURIComponent(data.nama) + 
-        "&email=" + encodeURIComponent(data.email) + 
-        "&pesan=" + encodeURIComponent(data.pesan)
-})
-      .then(res => res.json())
-      .then(() => {
-        window.location.href = "https://maps.app.goo.gl/8b4aqMv6ei5XMqke8?review=1"; // Ganti dengan link Google Review kamu
-      });
-  .catch(error => {
-  console.error("Error:", error);
-  alert("Terjadi kesalahan saat mengirim data.");
-}); 
-    }
-  </script>
-</head>
-<body>
-  <h2>Form Ulasan Pelanggan</h2>
-  <form onsubmit="handleSubmit(event)">
-    <label>Nama:</label><br>
-    <input type="text" id="nama" required><br><br>
-
-    <label>Email:</label><br>
-    <input type="email" id="email" required><br><br>
-
-    <label>Pesan:</label><br>
-    <textarea id="pesan" required></textarea><br><br>
-
-    <button type="submit">Kirim</button>
-  </form>
-</body>
-</html>
+    fetch("https://script.google.com/macros/s/AKfycbxh9jAIUIjWRHZsFlIyR6qZ5j7kuFntYVUdAKbrOSeUh5nJS4qnSBfnsMJzEmrKs8g6/exec", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: formData.toString()
+    })
+    .then(res => res.text())
+    .then(() => {
+      alert("Data berhasil dikirim!");
+      window.location.href = "https://maps.app.goo.gl/8b4aqMv6ei5XMqke8?review=1";
+    })
+    .catch(error => {
+      console.error("Error:", error);
+      alert("Terjadi kesalahan saat mengirim data.");
+    });
+  }
+</script>
