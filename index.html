@@ -12,20 +12,20 @@
         pesan: document.getElementById("pesan").value,
       };
 
-      fetch("https://script.google.com/macros/s/AKfycb.../exec", {
+      fetch("https://script.google.com/macros/s/PASTE_WEB_APP_URL/exec", {
         method: "POST",
         body: JSON.stringify(data),
         headers: { "Content-Type": "application/json" }
       })
       .then(res => res.json())
       .then(() => {
-        window.location.href = "https://g.page/namabisnis/review"; // Ganti dengan link review kamu
+        window.location.href = "https://g.page/namabisnismu/review"; // Ganti dengan link Google Review kamu
       });
     }
   </script>
 </head>
 <body>
-  <h2>Form Ulasan</h2>
+  <h2>Form Ulasan Pelanggan</h2>
   <form onsubmit="handleSubmit(event)">
     <label>Nama:</label><br>
     <input type="text" id="nama" required><br><br>
